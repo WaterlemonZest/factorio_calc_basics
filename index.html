@@ -1,0 +1,170 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  </head>
+  <style>
+    /* Styles */
+    body,
+    html {
+      margin: 0;
+      background: rgb(152, 148, 156);
+    }
+
+    header,
+    main,
+    nav,
+    table {
+      padding: 2rem;
+    }
+
+
+    .label {
+      --label-fs: 1rem;
+      /*--label-lh: calc(1.25 * var(--label-fs));*/
+      --label-lh: calc(1.5 * var(--label-fs));
+      font-size: var(--label-fs);
+      display: flex;
+      flex-direction: row;
+      line-height: var(--label-lh);
+      margin-block: 1rem;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .inlineIcon {
+      --border-w: 1px;
+      --icon-size: calc(var(--label-lh) - 2 * var(--border-w));
+      width: var(--icon-size);
+      height: var(--icon-size);
+      border-width: var(--border-w);
+      border-style: solid;
+      object-fit: contain;
+    }
+  </style>
+  <body>
+    <!-- Page structure, elements -->
+    <header>
+      <h1>Your simple calculator</h1>
+    </header>
+    <aside>
+      <nav>
+        <p><a href="number_guessing.html">Number guessing game</a></p>
+      </nav>
+    </aside>
+
+    <main>
+      <!-- User input -->
+      <div>
+        <label for="targetValue" class="label">
+          <img
+            src="Factorio_assets/Automation_science_pack.png"
+            alt="Automation science"
+            height="64px"
+            width="64px"
+            class="inlineIcon"
+          />
+          target:
+        </label>
+        <input id="targetValue" type="number" name="userValue" value="10" min = "0"/>
+        <select id="targetUnit" name="userUnit">
+          <option value="ups">Units per second</option>
+          <option value="upm">Units per minute</option>
+          <option value="yellowBelt"
+            >x
+            <img
+              src="Factorio_assets/Transport_belt.png"
+              alt="Yellow transport belts"
+          /></option>
+        </select>
+      </div>
+
+      <!-- Recipe breakdown -->
+      <div>
+        <div id="recipeBreakdown"></div>
+
+        <table id="recipeList">
+          <tr>
+            <th> Recipe </td>
+            <th> Factories </td>
+            <th> Input </td>
+          </tr>
+          <tr>
+              <td> <img
+                src="Factorio_assets/Automation_science_pack.png"
+                alt="Automation science"
+                height="64px"
+                width="64px"
+                class="inlineIcon"
+              /> </td>
+              <td> <img
+                src="Factorio_assets/Assembling_machine_1.png"
+                alt="Basic assembling machine"
+                height="64px"
+                width="64px"
+                class="inlineIcon"
+              /> x<span id="RSFactoryCount">100 </span> </td>
+              <td> <img
+                src="Factorio_assets/Iron_gear_wheel.png"
+                alt="Iron gear wheel"
+                height="64px"
+                width="64px"
+                class="inlineIcon"
+              /> x<span id="RSCogCount">100 </span></td>
+              <td> <img
+                src="Factorio_assets/Copper_plate.png"
+                alt="Copper plate"
+                height="64px"
+                width="64px"
+                class="inlineIcon"
+              /> x<span id="RSCopperCount">100 </span></td>
+            </tr>
+          <tr>
+              <td> <img
+                src="Factorio_assets/Iron_gear_wheel.png"
+                alt="Automation science"
+                height="64px"
+                width="64px"
+                class="inlineIcon"
+              /> </td>
+              <td> <img
+                src="Factorio_assets/Assembling_machine_1.png"
+                alt="Basic assembling machine"
+                height="64px"
+                width="64px"
+                class="inlineIcon"
+              /> x<span id="cogFactoryCount">100 </span> </td>
+              <td> <img
+                src="Factorio_assets/Iron_plate.png"
+                alt="Iron gear wheel"
+                height="64px"
+                width="64px"
+                class="inlineIcon"
+              /> x<span id="cogIronCount">100 </span></td>
+            </tr>
+        </table>
+      </div>
+    </main>
+  </body>
+
+  <script src="factorio_calcs.js" type="module" defer></script>
+  <script>
+    /*
+     ** any custom logic that is inside the html file
+     */
+
+    // Learning to change the contents of the HTML:
+    const myHeading = document.querySelector("h1");
+    myHeading.textContent = "Factorio simple calculator";
+
+    function handleInput(event) {
+      console.log(event.target.value);
+    }
+  </script>
+</html>
